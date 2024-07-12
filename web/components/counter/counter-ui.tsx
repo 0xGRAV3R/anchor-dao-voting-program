@@ -56,6 +56,7 @@ export function CounterList() {
         <div className="text-center">
           <h2 className={'text-2xl'}>No accounts</h2>
           No accounts found. Create one above to get started.
+          
         </div>
       )}
     </div>
@@ -79,24 +80,30 @@ function CounterCard({ account }: { account: PublicKey }) {
   return accountQuery.isLoading ? (
     <span className="loading loading-spinner loading-lg"></span>
   ) : (
-    <div className="card card-bordered border-base-300 border-4 text-neutral-content">
+    <div className="card card-bordered border-base-300 border-4 text-content">
       <div className="card-body items-center text-center">
         <div className="space-y-6">
+          <h2><strong>New Proposal</strong></h2>
+          <p>Hic programma permittat utentes suffragia 
+            <br></br>ferre de propositionibus et eventus ostendere.</p>
           <h2
             className="card-title justify-center text-3xl cursor-pointer"
             onClick={() => accountQuery.refetch()}
           >
             {count}
           </h2>
+          <p>
+          {/* {`${accountQuery.data?.count}`} */}
+          </p>
           <div className="card-actions justify-around">
             <button
               className="btn btn-xs lg:btn-md btn-outline"
               onClick={() => incrementMutation.mutateAsync()}
               disabled={incrementMutation.isPending}
             >
-              Increment
+              Vote 🔥
             </button>
-            <button
+            {/* <button
               className="btn btn-xs lg:btn-md btn-outline"
               onClick={() => {
                 const value = window.prompt(
@@ -115,14 +122,14 @@ function CounterCard({ account }: { account: PublicKey }) {
               disabled={setMutation.isPending}
             >
               Set
-            </button>
+            </button> 
             <button
               className="btn btn-xs lg:btn-md btn-outline"
               onClick={() => decrementMutation.mutateAsync()}
               disabled={decrementMutation.isPending}
             >
               Decrement
-            </button>
+            </button> */}
           </div>
           <div className="text-center space-y-4">
             <p>
@@ -131,7 +138,7 @@ function CounterCard({ account }: { account: PublicKey }) {
                 label={ellipsify(account.toString())}
               />
             </p>
-            <button
+             <button
               className="btn btn-xs btn-secondary btn-outline"
               onClick={() => {
                 if (
@@ -146,7 +153,7 @@ function CounterCard({ account }: { account: PublicKey }) {
               disabled={closeMutation.isPending}
             >
               Close
-            </button>
+            </button> 
           </div>
         </div>
       </div>

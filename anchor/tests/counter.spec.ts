@@ -13,7 +13,7 @@ describe('counter', () => {
 
   const counterKeypair = Keypair.generate();
 
-  it('Initialize Counter', async () => {
+  it('Initialize Voter', async () => {
     await program.methods
       .initialize()
       .accounts({
@@ -30,7 +30,7 @@ describe('counter', () => {
     expect(currentCount.count).toEqual(0);
   });
 
-  it('Increment Counter', async () => {
+  it('Increment Voter', async () => {
     await program.methods
       .increment()
       .accounts({ counter: counterKeypair.publicKey })
@@ -43,7 +43,7 @@ describe('counter', () => {
     expect(currentCount.count).toEqual(1);
   });
 
-  it('Increment Counter Again', async () => {
+  it('Increment Voter Again', async () => {
     await program.methods
       .increment()
       .accounts({ counter: counterKeypair.publicKey })
@@ -56,7 +56,7 @@ describe('counter', () => {
     expect(currentCount.count).toEqual(2);
   });
 
-  it('Decrement Counter', async () => {
+  it('Add Voter Point', async () => {
     await program.methods
       .decrement()
       .accounts({ counter: counterKeypair.publicKey })
@@ -69,7 +69,7 @@ describe('counter', () => {
     expect(currentCount.count).toEqual(1);
   });
 
-  it('Set counter value', async () => {
+  it('Set vote value', async () => {
     await program.methods
       .set(42)
       .accounts({ counter: counterKeypair.publicKey })
@@ -82,7 +82,7 @@ describe('counter', () => {
     expect(currentCount.count).toEqual(42);
   });
 
-  it('Set close the counter account', async () => {
+  it('Set close the voter account', async () => {
     await program.methods
       .close()
       .accounts({
